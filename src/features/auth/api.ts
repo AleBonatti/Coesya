@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { api } from "@/lib/api";
 import type { User } from "./types";
 
@@ -21,12 +21,20 @@ export async function loginRequest(params: { email: string; password: string }):
     try {
         const res = await api.post<{ token: string }>("/login", params);
         return res.data;
-    } catch (error) {
-        const err = error as AxiosError;
-        if (err.response?.status === 401) {
-            throw new Error("Credenziali non validde");
+    } catch (error: unknown) {
+        // Mantieni l'errore Axios originale
+        if (axios.isAxiosError(error)) {
+            // opzionale: messaggio più chiaro per la UI
+            if (error.response?.status === 401 || error.response?.status === 403) {
+                error.message = "Dati di accesso non validi";
+            }
+            // Rilancia l'OGGETTO AxiosError, non crearne uno nuovo
+            throw error;
         }
-        throw error; //new Error(err.message || "Login failed");
+
+        // Fallback per errori non-Axios
+        const err = error as Error;
+        throw new Error(err?.message || "Login failed");
     }
 }
 

@@ -42,9 +42,8 @@ export function parseLaravelError(e: unknown): ParsedError {
         let formMessage: string | null = null;
         const fields: FieldErrors = {};
 
-        if (!formMessage && status === 403) {
-            formMessage = "Dati di accessi non validi";
-        } else if (isLaravelErrorPayload(payload)) {
+        // è un errore che arriva da una validazione Laravel
+        if (isLaravelErrorPayload(payload)) {
             if (payload.errors) {
                 for (const [key, val] of Object.entries(payload.errors)) {
                     if (Array.isArray(val)) {
