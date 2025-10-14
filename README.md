@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# Coesya – React + TypeScript Learning Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **personal learning playground** built to deepen my understanding of **React**, **TypeScript**, and modern front-end development practices.
 
-Currently, two official plugins are available:
+It combines a realistic application structure (authentication, routing, API integration, UI components) with an emphasis on code organization, type safety, and reusable patterns.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧩 Stack Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Area                      | Technology / Library                                                        | Purpose                                    |
+| ------------------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
+| **Framework**             | [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) | Component-based UI with static typing      |
+| **Routing**               | [TanStack Router](https://tanstack.com/router)                              | File-based routing and route guards        |
+| **Data fetching & cache** | [TanStack Query (React Query)](https://tanstack.com/query)                  | Server-state management and API cache      |
+| **HTTP client**           | [Axios](https://axios-http.com/)                                            | Simplified API requests                    |
+| **Styling**               | [Tailwind CSS](https://tailwindcss.com/)                                    | Utility-first CSS framework                |
+| **State & context**       | React Context (custom `AuthContext`)                                        | Authentication and user session management |
+| **Dev tools**             | Vite + React Query Devtools + TanStack Router Devtools                      | Fast build, debugging, and introspection   |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Project Goals
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Strengthen understanding of **React component architecture**
+- Practice **TypeScript** with React hooks, contexts, and generics
+- Learn **client-side authentication** patterns (login/logout, protected routes)
+- Experiment with **TanStack Router** and **React Query** integration
+- Build **reusable UI components** (Button, Input, etc.) using Tailwind CSS
+- Structure a realistic app with **feature-based folders**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📁 Folder Structure
